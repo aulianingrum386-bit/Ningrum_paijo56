@@ -17,7 +17,6 @@
         }
 
         body {
-            /* Background gradasi estetik */
             background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #e1bee7 100%);
             min-height: 100vh;
             display: flex;
@@ -28,7 +27,7 @@
             position: relative;
         }
 
-        /* --- 2. CARD UTAMA (Glassmorphism Effect) --- */
+        /* --- 2. CARD UTAMA --- */
         .container {
             background: rgba(255, 255, 255, 0.45);
             backdrop-filter: blur(12px);
@@ -37,7 +36,7 @@
             padding: 35px 25px;
             border-radius: 24px;
             width: 100%;
-            max-width: 400px; /* Pas untuk ukuran layar HP */
+            max-width: 400px;
             text-align: center;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             animation: muncul 1.5s ease-out;
@@ -49,7 +48,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- 4. GAYA ELEMEN (FOTO, TEKS, DLL) --- */
+        /* --- 4. GAYA ELEMEN FOTO --- */
         .foto-cowok {
             width: 150px;
             height: 150px;
@@ -59,6 +58,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-bottom: 20px;
             transition: transform 0.3s ease;
+            display: inline-block;
         }
 
         .foto-cowok:hover {
@@ -73,7 +73,7 @@
             font-weight: bold;
         }
 
-        h2 {
+        <h2> {
             font-size: 1.2rem;
             color: #4a4a4a;
             margin-bottom: 20px;
@@ -110,7 +110,7 @@
             transform: translateY(1px);
         }
 
-        /* --- 6. SURAT RAHASIA (Sembunyi dulu) --- */
+        /* --- 6. SURAT RAHASIA --- */
         .pesan-rahasia {
             display: none;
             margin-top: 25px;
@@ -121,6 +121,7 @@
             color: #ad1457;
             border-left: 5px solid #ff4081;
             animation: fadeIn 1s ease-in-out forwards;
+            text-align: left;
         }
 
         @keyframes fadeIn {
@@ -128,7 +129,7 @@
             to { opacity: 1; }
         }
 
-        /* --- 7. EFEK HATI BERTEBARAN (JS) --- */
+        /* --- 7. EFEK HATI --- */
         .heart {
             position: absolute;
             color: #ff4081;
@@ -146,9 +147,7 @@
 <body>
 
     <div class="container">
-        <img src="foto2.jpg" alt="Foto Cowokku" class="foto2.jpg">
-
-        <img src="foto2.JPG" alt="Foto Cowokku" class="foto-cowok">
+        <img src="foto2.jpg" alt="Foto Cowokku" class="foto-cowok">
         
         <h1>Happy Birthday!</h1>
         <h2>Untuk Pacar Tersayang ❤️</h2>
@@ -165,11 +164,9 @@
 
     <script>
         function bukaSurat() {
-            // Tampilkan pesan rahasia
             const surat = document.getElementById('surat');
             surat.style.display = 'block';
             
-            // Efek memunculkan hati bertebaran
             for (let i = 0; i < 20; i++) {
                 setTimeout(buatHati, i * 150);
             }
@@ -180,14 +177,11 @@
             heart.classList.add('heart');
             heart.innerHTML = '❤️';
             
-            // Posisi random horizontal (X) dari kiri ke kanan layar
             heart.style.left = Math.random() * 100 + 'vw';
-            // Kecepatan durasi animasi random biar natural
             heart.style.animationDuration = Math.random() * 2 + 2 + 's';
             
             document.body.appendChild(heart);
             
-            // Hapus elemen hati setelah animasinya selesai agar tidak membebani memori HP
             setTimeout(() => {
                 heart.remove();
             }, 4000);
